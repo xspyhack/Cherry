@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FAE1982528A78E3800559205 /* CherryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1982428A78E3800559205 /* CherryApp.swift */; };
-		FAE1982728A78E3800559205 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1982628A78E3800559205 /* ContentView.swift */; };
+		FAE1982528A78E3800559205 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1982428A78E3800559205 /* App.swift */; };
+		FAE1982728A78E3800559205 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1982628A78E3800559205 /* MainView.swift */; };
 		FAE1982928A78E3A00559205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE1982828A78E3A00559205 /* Assets.xcassets */; };
-		FAE1982C28A78E3A00559205 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE1982B28A78E3A00559205 /* Preview Assets.xcassets */; };
 		FAE1983628A78E3B00559205 /* CherryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1983528A78E3B00559205 /* CherryTests.swift */; };
+		FAE1985228A7963F00559205 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1985128A7963F00559205 /* Sidebar.swift */; };
+		FAE1985428A7974E00559205 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1985328A7974E00559205 /* DetailView.swift */; };
+		FAE1985728A79F0000559205 /* MatterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1985628A79F0000559205 /* MatterList.swift */; };
+		FAE1985928A7A1B300559205 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1985828A7A1B300559205 /* Journal.swift */; };
+		FAE1985F28A7A57D00559205 /* Blessing in Frameworks */ = {isa = PBXBuildFile; productRef = FAE1985E28A7A57D00559205 /* Blessing */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,12 +30,17 @@
 
 /* Begin PBXFileReference section */
 		FAE1982128A78E3800559205 /* Cherry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cherry.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FAE1982428A78E3800559205 /* CherryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CherryApp.swift; sourceTree = "<group>"; };
-		FAE1982628A78E3800559205 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FAE1982428A78E3800559205 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		FAE1982628A78E3800559205 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FAE1982828A78E3A00559205 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FAE1982B28A78E3A00559205 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FAE1983128A78E3B00559205 /* CherryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CherryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE1983528A78E3B00559205 /* CherryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CherryTests.swift; sourceTree = "<group>"; };
+		FAE1984E28A795D600559205 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FAE1985128A7963F00559205 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		FAE1985328A7974E00559205 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		FAE1985628A79F0000559205 /* MatterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatterList.swift; sourceTree = "<group>"; };
+		FAE1985828A7A1B300559205 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
+		FAE1985C28A7A41500559205 /* Blessing */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Blessing; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAE1985F28A7A57D00559205 /* Blessing in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,12 +62,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA92AFE928A7A77D00217378 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAE1985828A7A1B300559205 /* Journal.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA92AFEA28A7A78600217378 /* Matter */ = {
+			isa = PBXGroup;
+			children = (
+				FAE1985628A79F0000559205 /* MatterList.swift */,
+			);
+			path = Matter;
+			sourceTree = "<group>";
+		};
 		FAE1981828A78E3800559205 = {
 			isa = PBXGroup;
 			children = (
-				FAE1982328A78E3800559205 /* Cherry */,
+				FAE1984E28A795D600559205 /* README.md */,
+				FAE1982328A78E3800559205 /* Shared */,
+				FAE1985C28A7A41500559205 /* Blessing */,
 				FAE1983428A78E3B00559205 /* CherryTests */,
 				FAE1982228A78E3800559205 /* Products */,
+				FAE1985D28A7A57D00559205 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,23 +99,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FAE1982328A78E3800559205 /* Cherry */ = {
+		FAE1982328A78E3800559205 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				FAE1982428A78E3800559205 /* CherryApp.swift */,
-				FAE1982628A78E3800559205 /* ContentView.swift */,
-				FAE1982828A78E3A00559205 /* Assets.xcassets */,
-				FAE1982A28A78E3A00559205 /* Preview Content */,
+				FAE1982428A78E3800559205 /* App.swift */,
+				FA92AFEA28A7A78600217378 /* Matter */,
+				FA92AFE928A7A77D00217378 /* Model */,
+				FAE1985028A7961400559205 /* Navigation */,
+				FAE1985528A79C4100559205 /* Resources */,
 			);
-			path = Cherry;
-			sourceTree = "<group>";
-		};
-		FAE1982A28A78E3A00559205 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				FAE1982B28A78E3A00559205 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		FAE1983428A78E3B00559205 /* CherryTests */ = {
@@ -95,6 +117,31 @@
 				FAE1983528A78E3B00559205 /* CherryTests.swift */,
 			);
 			path = CherryTests;
+			sourceTree = "<group>";
+		};
+		FAE1985028A7961400559205 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				FAE1985128A7963F00559205 /* Sidebar.swift */,
+				FAE1982628A78E3800559205 /* MainView.swift */,
+				FAE1985328A7974E00559205 /* DetailView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		FAE1985528A79C4100559205 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FAE1982828A78E3A00559205 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FAE1985D28A7A57D00559205 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -113,6 +160,9 @@
 			dependencies = (
 			);
 			name = Cherry;
+			packageProductDependencies = (
+				FAE1985E28A7A57D00559205 /* Blessing */,
+			);
 			productName = Cherry;
 			productReference = FAE1982128A78E3800559205 /* Cherry.app */;
 			productType = "com.apple.product-type.application";
@@ -178,7 +228,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAE1982C28A78E3A00559205 /* Preview Assets.xcassets in Resources */,
 				FAE1982928A78E3A00559205 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,8 +246,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAE1982728A78E3800559205 /* ContentView.swift in Sources */,
-				FAE1982528A78E3800559205 /* CherryApp.swift in Sources */,
+				FAE1982728A78E3800559205 /* MainView.swift in Sources */,
+				FAE1985428A7974E00559205 /* DetailView.swift in Sources */,
+				FAE1985228A7963F00559205 /* Sidebar.swift in Sources */,
+				FAE1982528A78E3800559205 /* App.swift in Sources */,
+				FAE1985728A79F0000559205 /* MatterList.swift in Sources */,
+				FAE1985928A7A1B300559205 /* Journal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +395,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Cherry/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -370,7 +422,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Cherry/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -460,6 +511,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FAE1985E28A7A57D00559205 /* Blessing */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Blessing;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FAE1981928A78E3800559205 /* Project object */;
 }
