@@ -8,7 +8,7 @@
 import Foundation
 
 /// Tag table (Hong Kong MTR station colour)
-enum Tagble: String, Codable, CaseIterable {
+public enum Tagble: String, Codable, CaseIterable {
     case none = "#de3163"
     case hengfachuen = "#b51921"
     case taikoo = "#b2103e"
@@ -99,7 +99,7 @@ enum Tagble: String, Codable, CaseIterable {
     case lowu = "#f1f2f7"
 }
 
-extension Tagble {
+public extension Tagble {
     static func random() -> Tagble {
         return Tagble.allCases.randomElement() ?? .none
     }

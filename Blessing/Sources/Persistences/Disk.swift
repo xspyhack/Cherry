@@ -8,20 +8,20 @@
 
 import Foundation
 
-struct Disk {
-    enum Directory: Equatable {
+public struct Disk {
+    public enum Directory: Equatable {
         case documents
         case caches
         case temporary
     }
 
-    enum Sorting {
+    public enum Sorting {
         case none
         case created
         case modified
     }
 
-    enum Ordering {
+    public enum Ordering {
         case asc
         case desc
 
@@ -35,17 +35,17 @@ struct Disk {
         }
     }
 
-    enum Error: Swift.Error {
+    public enum Error: Swift.Error {
         case couldNotAccessUserDomainMask
     }
 
     private let fileManager: FileManager
 
-    init(fileManager: FileManager = FileManager.default) {
+    public init(fileManager: FileManager = FileManager.default) {
         self.fileManager = fileManager
     }
 
-    func url(atPath path: String, in directory: Directory) throws -> URL {
+    public func url(atPath path: String, in directory: Directory) throws -> URL {
         guard let url = fileManager.urls(for: directory.searchPathDirectory, in: .userDomainMask).first else {
             throw Error.couldNotAccessUserDomainMask
         }
@@ -53,7 +53,7 @@ struct Disk {
         return url.appendingPathComponent(path, isDirectory: false)
     }
 
-    func urls(at url: URL,
+    public func urls(at url: URL,
               sortBy sorting: Sorting = .none,
               orderBy ordering: Ordering = .asc) throws -> [URL] {
         let resourceKeys: [URLResourceKey]
@@ -89,37 +89,37 @@ struct Disk {
             .sorted(by: sorted)
     }
 
-    func write(_ data: Data, to url: URL) throws {
+    public func write(_ data: Data, to url: URL) throws {
         try data.write(to: url)
     }
 
-    func read(from url: URL) throws -> Data {
+    public func read(from url: URL) throws -> Data {
         return try Data(contentsOf: url)
     }
 }
 
 extension Disk {
-    func remove(at url: URL) throws {
+    public func remove(at url: URL) throws {
         try fileManager.removeItem(at: url)
     }
 
-    func clear(_ directory: Directory) throws {
+    public func clear(_ directory: Directory) throws {
         let url = try self.url(atPath: "", in: directory)
         let urls = try self.urls(at: url)
         try urls.forEach(remove)
     }
 
-    func fileExists(atPath path: String, isDirectory: UnsafeMutablePointer<ObjCBool>? = nil) -> Bool {
+    public func fileExists(atPath path: String, isDirectory: UnsafeMutablePointer<ObjCBool>? = nil) -> Bool {
         return fileManager.fileExists(atPath: path, isDirectory: isDirectory)
     }
 
-    func createDirecory(atPath path: String) throws {
+    public func createDirecory(atPath path: String) throws {
         try? fileManager.createDirectory(atPath: path,
                                          withIntermediateDirectories: true,
                                          attributes: nil)
     }
 
-    func createDirectoryIfNecessary(at url: URL) throws {
+    public func createDirectoryIfNecessary(at url: URL) throws {
         let directory = url.deletingLastPathComponent()
 
         var isDirectory: ObjCBool = false

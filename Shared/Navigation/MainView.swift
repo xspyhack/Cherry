@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
-
+  /// The app's model that the containing scene passes in.
+  @ObservedObject var store: Store
   @State private var selection: Journal? = Journal.personal
   @State private var path = NavigationPath()
 
@@ -21,7 +22,7 @@ struct MainView: View {
       Sidebar(selection: $selection)
     } detail: {
       NavigationStack(path: $path) {
-        DetailView(selection: $selection)
+        DetailView(store: store, selection: $selection)
       }
     }
     .onChange(of: selection) { _ in
@@ -40,7 +41,7 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
   struct Preview: View {
     var body: some View {
-      MainView()
+      MainView(store: .preview)
     }
   }
   static var previews: some View {

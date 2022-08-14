@@ -8,25 +8,25 @@
 
 import Foundation
 
-protocol StoreKey {
-    var identifier: String { get }
+public protocol StoreKey {
+    var storeKey: String { get }
 }
 
 extension String: StoreKey {
-    var identifier: String {
+    public var storeKey: String {
         return self
     }
 }
 
 /// Disk service for manager encodable object. Store, retrieve, remove...
-struct Charmander {
+public struct Charmander {
     let disk: Disk
     let directory: Disk.Directory
     let folder: String
 
     static let firstMatterKey = "com.cerise.first.matter"
 
-    init(disk: Disk = Disk(),
+    public init(disk: Disk = Disk(),
          directory: Disk.Directory = .documents,
          folder: String = "com.blessingsoftware.cerise") {
         self.disk = disk
@@ -39,7 +39,7 @@ struct Charmander {
     /// - Parameter key: Identifier key
     /// - Parameter encoder: Encoder. Defaults JSONEncoder.
     @discardableResult
-    func store<Object: Encodable>(_ object: Object,
+    public func store<Object: Encodable>(_ object: Object,
                                   forKey key: StoreKey,
                                   encoder: JSONEncoder = JSONEncoder()) throws -> URL {
         let url = try disk.url(atPath: path(forKey: key), in: directory)
@@ -50,7 +50,7 @@ struct Charmander {
         return url
     }
 
-    func retrieve<Object: Decodable>(forKey key: StoreKey,
+    public func retrieve<Object: Decodable>(forKey key: StoreKey,
                                      type: Object.Type,
                                      decoder: JSONDecoder = JSONDecoder()) throws -> Object {
         let url = try disk.url(atPath: path(forKey: key), in: directory)
@@ -58,7 +58,7 @@ struct Charmander {
         return try decoder.decode(type, from: data)
     }
 
-    func retrieveAll<Object: Decodable>(type: Object.Type,
+    public func retrieveAll<Object: Decodable>(type: Object.Type,
                                         decoder: JSONDecoder = JSONDecoder(),
                                         sortBy sorting: Disk.Sorting = .none) throws -> [Object] {
         let url = try disk.url(atPath: "\(folder)/", in: directory)
@@ -67,7 +67,7 @@ struct Charmander {
             .map { try decoder.decode(type, from: $0) }
     }
 
-    func urls(sortBy sorting: Disk.Sorting = .none) throws -> [URL] {
+    public func urls(sortBy sorting: Disk.Sorting = .none) throws -> [URL] {
         let url = try disk.url(atPath: "\(folder)/", in: directory)
         return try disk.urls(at: url, sortBy: sorting)
     }
@@ -75,20 +75,20 @@ struct Charmander {
     /// Remove object from disk
     /// - Parameter key: Identifier key
     @discardableResult
-    func remove(forKey key: StoreKey) throws -> URL {
+    public func remove(forKey key: StoreKey) throws -> URL {
         let url = try disk.url(atPath: path(forKey: key), in: directory)
         try disk.remove(at: url)
 
         return url
     }
 
-    func clear() throws {
+    public func clear() throws {
         let url = try disk.url(atPath: "\(folder)/", in: directory)
         let urls = try disk.urls(at: url)
         try urls.forEach(disk.remove)
     }
 
     private func path(forKey key: StoreKey) -> String {
-        return "\(folder)/\(key.identifier)"
+        return "\(folder)/\(key.storeKey)"
     }
 }

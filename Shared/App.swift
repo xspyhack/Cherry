@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct CherryApp: App {
+  /// The app's state.
+  @StateObject private var store = Store()
+
   var body: some Scene {
     WindowGroup {
-      MainView()
+      MainView(store: store)
     }
     #if os(macOS)
     .defaultSize(width: 1000, height: 650)

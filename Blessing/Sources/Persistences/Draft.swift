@@ -8,30 +8,30 @@
 
 import Foundation
 
-struct Draft {
-    static let charmander: Charmander = Charmander(directory: .caches)
+public struct Draft {
+    public static let charmander: Charmander = Charmander(directory: .caches)
     static let key: String = "matter.draft"
 
-    enum Action {
+    public enum Action {
         case delete
         case save
     }
 
-    static func store<Object: Encodable>(_ object: Object,
+    public static func store<Object: Encodable>(_ object: Object,
                                          encoder: JSONEncoder = JSONEncoder()) throws {
         try charmander.store(object, forKey: key)
     }
 
-    static func retrieve<Object: Decodable>(_ type: Object.Type,
+    public static func retrieve<Object: Decodable>(_ type: Object.Type,
                                             decoder: JSONDecoder = JSONDecoder()) throws -> Object {
         return try charmander.retrieve(forKey: key, type: type)
     }
 
-    static func remove() throws {
+    public static func remove() throws {
         try charmander.remove(forKey: key)
     }
 
-    static func clear() throws {
+    public static func clear() throws {
         try charmander.clear()
     }
 }
