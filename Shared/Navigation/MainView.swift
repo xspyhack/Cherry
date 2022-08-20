@@ -11,7 +11,7 @@ struct MainView: View {
   /// The app's model that the containing scene passes in.
   @ObservedObject var store: Store
   @State private var selection: Journal? = Journal.personal
-  @State private var path = NavigationPath()
+  @StateObject private var coordinator = Coordinator()
 
 #if os(iOS)
   @Environment(\.scenePhase) private var scenePhase
@@ -21,12 +21,12 @@ struct MainView: View {
     NavigationSplitView {
       Sidebar(selection: $selection)
     } detail: {
-      NavigationStack(path: $path) {
-        DetailView(store: store, selection: $selection)
+      NavigationStack(path: $coordinator.path) {
+        DetailView(store: store, coordinator: coordinator)
       }
     }
     .onChange(of: selection) { _ in
-      path.removeLast(path.count)
+      coordinator.popToRoot()
     }
 #if os(macOS)
     .frame(minWidth: 600, minHeight: 450)

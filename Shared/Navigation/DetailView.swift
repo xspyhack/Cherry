@@ -9,10 +9,10 @@ import SwiftUI
 
 struct DetailView: View {
   @ObservedObject var store: Store
-  @Binding var selection: Journal?
+  @ObservedObject var coordinator: Coordinator
 
   var body: some View {
-    MattersList(store: store)
+    MattersList(store: store, coordinator: coordinator)
   }
 }
 
@@ -20,7 +20,7 @@ struct DetailView_Previews: PreviewProvider {
   struct Preview: View {
     @State private var selection: Journal? = .personal
     var body: some View {
-      DetailView(store: .preview, selection: $selection)
+      DetailView(store: .preview, coordinator: .preview)
     }
   }
   static var previews: some View {

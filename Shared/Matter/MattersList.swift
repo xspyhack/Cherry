@@ -10,15 +10,19 @@ import Blessing
 
 struct MattersList: View {
   @ObservedObject var store: Store
+  @ObservedObject var coordinator: Coordinator
   @State var selection: Matter?
 
   var body: some View {
     List(selection: $selection) {
       Section {
         ForEach(store.pastMatters) { matter in
-          NavigationLink(value: matter.id) {
+          Button {
+            coordinator.path.append(matter.id)
+          } label: {
             MatterRow(matter: matter)
           }
+
         }
       } header: {
         Text("Past")
@@ -28,7 +32,9 @@ struct MattersList: View {
 
       Section {
         ForEach(store.upcomingMatters) { matter in
-          NavigationLink(value: matter.id) {
+          Button {
+            coordinator.path.append(matter.id)
+          } label: {
             MatterRow(matter: matter)
           }
         }
@@ -54,7 +60,7 @@ struct MattersList: View {
 
 struct MattersList_Previews: PreviewProvider {
   static var previews: some View {
-    MattersList(store: Store())
+    MattersList(store: Store.preview, coordinator: Coordinator.preview)
   }
 }
 

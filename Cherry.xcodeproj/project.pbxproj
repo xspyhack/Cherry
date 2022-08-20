@@ -13,6 +13,7 @@
 		FA92AFF728A8CF8000217378 /* MatterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92AFF628A8CF8000217378 /* MatterRow.swift */; };
 		FA92AFF928A8D20500217378 /* MatterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92AFF828A8D20500217378 /* MatterDetailView.swift */; };
 		FA92AFFB28A8D89D00217378 /* MatterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92AFFA28A8D89D00217378 /* MatterService.swift */; };
+		FABF00C728B0EECC00F8C97B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF00C628B0EECC00F8C97B /* Coordinator.swift */; };
 		FAE1982528A78E3800559205 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1982428A78E3800559205 /* App.swift */; };
 		FAE1982728A78E3800559205 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1982628A78E3800559205 /* MainView.swift */; };
 		FAE1982928A78E3A00559205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE1982828A78E3A00559205 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		FA92AFF628A8CF8000217378 /* MatterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatterRow.swift; sourceTree = "<group>"; };
 		FA92AFF828A8D20500217378 /* MatterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatterDetailView.swift; sourceTree = "<group>"; };
 		FA92AFFA28A8D89D00217378 /* MatterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatterService.swift; sourceTree = "<group>"; };
+		FABF00C628B0EECC00F8C97B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		FAE1982128A78E3800559205 /* Cherry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cherry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE1982428A78E3800559205 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		FAE1982628A78E3800559205 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				FA92AFF428A8CB1F00217378 /* Store.swift */,
+				FABF00C628B0EECC00F8C97B /* Coordinator.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			files = (
 				FA92AFEE28A8C84600217378 /* Bootstrap.swift in Sources */,
 				FAE1982728A78E3800559205 /* MainView.swift in Sources */,
+				FABF00C728B0EECC00F8C97B /* Coordinator.swift in Sources */,
 				FAE1985428A7974E00559205 /* DetailView.swift in Sources */,
 				FA92AFF528A8CB1F00217378 /* Store.swift in Sources */,
 				FA92AFFB28A8D89D00217378 /* MatterService.swift in Sources */,
