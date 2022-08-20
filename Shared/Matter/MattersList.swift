@@ -29,6 +29,8 @@ struct MattersList: View {
           .sectionHeader()
           .listRowInsets(.headerInsets)
       }
+      .listRowBackground(Color.clear)
+      .listRowSeparator(.hidden)
 
       Section {
         ForEach(store.upcomingMatters) { matter in
@@ -43,15 +45,17 @@ struct MattersList: View {
           .sectionHeader()
           .listRowInsets(.headerInsets)
       }
+      .listRowBackground(Color.clear)
+      .listRowSeparator(.hidden)
     }
     .listStyle(.sidebar) // collapsible
 #if os(iOS)
-    .background(Color(uiColor: .systemGroupedBackground))
+    .background(Color(.systemBackground))
 #else
     .background(.quaternary.opacity(0.5))
 #endif
-    .background()
-    .navigationTitle(selection?.title ?? "Matters")
+    .background(Color.white)
+    .navigationTitle(store.journal?.title ?? "Matters")
     .navigationDestination(for: Matter.ID.self) { id in
       MatterDetailView(matter: store.matterBinding(for: id))
     }

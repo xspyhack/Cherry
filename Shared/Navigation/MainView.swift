@@ -10,7 +10,6 @@ import SwiftUI
 struct MainView: View {
   /// The app's model that the containing scene passes in.
   @ObservedObject var store: Store
-  @State private var selection: Journal? = Journal.personal
   @StateObject private var coordinator = Coordinator()
 
 #if os(iOS)
@@ -19,13 +18,13 @@ struct MainView: View {
 
   var body: some View {
     NavigationSplitView {
-      Sidebar(selection: $selection)
+      Sidebar(selection: $store.journal)
     } detail: {
       NavigationStack(path: $coordinator.path) {
         DetailView(store: store, coordinator: coordinator)
       }
     }
-    .onChange(of: selection) { _ in
+    .onChange(of: store.journal) { _ in
       coordinator.popToRoot()
     }
 #if os(macOS)

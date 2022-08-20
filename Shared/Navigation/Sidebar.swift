@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Sidebar: View {
-
   @Binding var selection: Journal?
 
   var body: some View {

@@ -12,18 +12,6 @@ struct MatterRow: View {
   var matter: Matter
 
   var body: some View {
-    /*
-    HStack {
-      Text(matter.title)
-        .font(.title2).fontWeight(.medium)
-      Spacer(minLength: 8)
-      Text(matter.days > 0 ? "+\(matter.days)" : "\(matter.days)")
-        .foregroundColor(Color(hex: matter.tag.rawValue))
-        .font(.largeTitle).fontWeight(.semibold)
-        .layoutPriority(1)
-    }
-     */
-
     Text(matter.title)
       .font(.title2).fontWeight(.medium)
       .badge(

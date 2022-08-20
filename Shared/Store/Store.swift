@@ -12,6 +12,7 @@ import Blessing
 @MainActor
 final class Store: ObservableObject {
   @Published var matters: [Matter] = []
+  @Published var journal: Journal? = Journal.personal
 
   private let service = MatterService()
 
