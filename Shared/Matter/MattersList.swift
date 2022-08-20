@@ -54,7 +54,7 @@ struct MattersList: View {
 
 struct MattersList_Previews: PreviewProvider {
   static var previews: some View {
-    MattersList(store: Store(), selection: .constant(.personal))
+    MattersList(store: Store())
   }
 }
 

@@ -12,7 +12,7 @@ struct DetailView: View {
   @Binding var selection: Journal?
 
   var body: some View {
-    MattersList(store: store, selection: $selection)
+    MattersList(store: store)
   }
 }
 
