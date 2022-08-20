@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Blessing
+import BlessingKit
 
 struct MattersList: View {
   @ObservedObject var store: Store

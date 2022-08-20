@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Blessing
+import BlessingKit
 
 final class MatterService {
   let charmander = Charmander()

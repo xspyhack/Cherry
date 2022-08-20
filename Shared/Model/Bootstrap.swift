@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Blessing
+import BlessingKit
 
 struct Bootstrap {
     private let charmander = Charmander()

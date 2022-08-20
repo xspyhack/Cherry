@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-import Blessing
+import BlessingKit
 
 @MainActor
 final class Store: ObservableObject {

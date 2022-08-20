@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Blessing
+import BlessingKit
 
 struct MatterRow: View {
   var matter: Matter

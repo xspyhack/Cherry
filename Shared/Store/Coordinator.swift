@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Blessing
+import BlessingKit
 
 final class Coordinator: ObservableObject {
   @Published var path: [Matter.ID] = []
