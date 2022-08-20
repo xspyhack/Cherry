@@ -13,16 +13,37 @@ struct MattersList: View {
   @Binding var selection: Journal?
 
   var body: some View {
-    List(store.matters) { matter in
-      NavigationLink(value: matter.id) {
-        MatterRow(matter: matter)
+    List(selection: $selection) {
+      Section {
+        ForEach(store.pastMatters) { matter in
+          NavigationLink(value: matter.id) {
+            MatterRow(matter: matter)
+          }
+        }
+      } header: {
+        Text("Past")
+          .sectionHeader()
+          .listRowInsets(.headerInsets)
+      }
+
+      Section {
+        ForEach(store.upcomingMatters) { matter in
+          NavigationLink(value: matter.id) {
+            MatterRow(matter: matter)
+          }
+        }
+      } header: {
+        Text("Upcoming")
+          .sectionHeader()
+          .listRowInsets(.headerInsets)
       }
     }
-    #if os(iOS)
+    .listStyle(.sidebar) // collapsible
+#if os(iOS)
     .background(Color(uiColor: .systemGroupedBackground))
-    #else
+#else
     .background(.quaternary.opacity(0.5))
-    #endif
+#endif
     .background()
     .navigationTitle(selection?.title ?? "Matters")
     .navigationDestination(for: Matter.ID.self) { id in
@@ -35,4 +56,23 @@ struct MattersList_Previews: PreviewProvider {
   static var previews: some View {
     MattersList(store: Store(), selection: .constant(.personal))
   }
+}
+
+struct SectionHeaderModifier: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .fontWeight(.medium).font(.subheadline)
+      .foregroundColor(.primary)
+      .textCase(.uppercase)
+  }
+}
+
+extension View {
+  func sectionHeader() -> some View {
+    modifier(SectionHeaderModifier())
+  }
+}
+
+fileprivate extension EdgeInsets {
+  static let headerInsets = EdgeInsets(top: 6, leading: 0, bottom: 0, trailing: 0)
 }

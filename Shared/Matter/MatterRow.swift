@@ -12,13 +12,37 @@ struct MatterRow: View {
   var matter: Matter
 
   var body: some View {
+    /*
+    HStack {
+      Text(matter.title)
+        .font(.title2).fontWeight(.medium)
+      Spacer(minLength: 8)
+      Text(matter.days > 0 ? "+\(matter.days)" : "\(matter.days)")
+        .foregroundColor(Color(hex: matter.tag.rawValue))
+        .font(.largeTitle).fontWeight(.semibold)
+        .layoutPriority(1)
+    }
+     */
+
     Text(matter.title)
+      .font(.title2).fontWeight(.medium)
+      .badge(
+        Text(days)
+          .foregroundColor(Color(hex: matter.tag.rawValue))
+          .font(.largeTitle).fontWeight(.semibold)
+      )
+  }
+
+  private var days: String {
+    matter.days > 0 ? "+\(matter.days)" : "\(matter.days)"
   }
 }
 
 struct MatterRow_Previews: PreviewProvider {
   static var previews: some View {
-    MatterRow(matter: .preview)
+    List {
+      MatterRow(matter: .preview)
+    }
   }
 }
 
@@ -26,6 +50,13 @@ extension Matter {
   static let preview = Matter(
     id: "id",
     title: "Preview",
-    occurrenceDate: Date()
+    occurrenceDate: Date().addingTimeInterval(11000000),
+    notes: "Preview matter"
   )
+}
+
+extension Matter {
+  var days: Int {
+    Date().bless.absoluteDays(with: occurrenceDate)
+  }
 }

@@ -16,7 +16,7 @@ final class Store: ObservableObject {
   private let service = MatterService()
 
   init() {
-    Task(priority: .background) {
+    Task(priority: .medium) {
       let bootstrap = Bootstrap()
       bootstrap.start()
 
@@ -49,6 +49,14 @@ final class Store: ObservableObject {
       }
       return self.matters[index] = newValue
     }
+  }
+
+  var pastMatters: [Matter] {
+    matters.filter { $0.occurrenceDate > Date() }
+  }
+
+  var upcomingMatters: [Matter] {
+    matters.filter { $0.occurrenceDate <= Date() }
   }
 }
 
