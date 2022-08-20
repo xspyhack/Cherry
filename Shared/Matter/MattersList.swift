@@ -10,7 +10,7 @@ import Blessing
 
 struct MattersList: View {
   @ObservedObject var store: Store
-  @Binding var selection: Journal?
+  @State var selection: Matter?
 
   var body: some View {
     List(selection: $selection) {
