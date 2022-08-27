@@ -24,7 +24,10 @@ struct MatterDetailView: View {
         .background(Color(.quaternarySystemFill))
     }
     .ignoresSafeArea(.all)
-    .navigationBarTitle("", displayMode: .inline)
+    .navigationTitle("")
+    #if os(iOS)
+    .navigationBarTitleDisplayMode(.inline)
+    #endif
   }
 
   private var header: some View {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA1614A128B9FD7B0086CF47 /* MatterEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1614A028B9FD7A0086CF47 /* MatterEditor.swift */; };
 		FA92AFEE28A8C84600217378 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92AFEC28A8C84600217378 /* Bootstrap.swift */; };
 		FA92AFF028A8C88A00217378 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92AFEF28A8C88A00217378 /* Logger.swift */; };
 		FA92AFF528A8CB1F00217378 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92AFF428A8CB1F00217378 /* Store.swift */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA16149F28B9F6590086CF47 /* BlessingKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = BlessingKit; path = ../../Swift/BlessingKit; sourceTree = "<group>"; };
+		FA1614A028B9FD7A0086CF47 /* MatterEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatterEditor.swift; sourceTree = "<group>"; };
 		FA92AFEC28A8C84600217378 /* Bootstrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bootstrap.swift; path = Shared/Model/Bootstrap.swift; sourceTree = SOURCE_ROOT; };
 		FA92AFEF28A8C88A00217378 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		FA92AFF428A8CB1F00217378 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -75,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA16149E28B9F6580086CF47 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				FA16149F28B9F6590086CF47 /* BlessingKit */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		FA92AFE928A7A77D00217378 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +103,7 @@
 				FAE1985628A79F0000559205 /* MattersList.swift */,
 				FA92AFF628A8CF8000217378 /* MatterRow.swift */,
 				FA92AFF828A8D20500217378 /* MatterDetailView.swift */,
+				FA1614A028B9FD7A0086CF47 /* MatterEditor.swift */,
 			);
 			path = Matter;
 			sourceTree = "<group>";
@@ -108,6 +120,7 @@
 		FAE1981828A78E3800559205 = {
 			isa = PBXGroup;
 			children = (
+				FA16149E28B9F6580086CF47 /* Packages */,
 				FAE1984E28A795D600559205 /* README.md */,
 				FAE1982328A78E3800559205 /* Shared */,
 				FAE1983428A78E3B00559205 /* CherryTests */,
@@ -277,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA92AFEE28A8C84600217378 /* Bootstrap.swift in Sources */,
+				FA1614A128B9FD7B0086CF47 /* MatterEditor.swift in Sources */,
 				FAE1982728A78E3800559205 /* MainView.swift in Sources */,
 				FABF00C728B0EECC00F8C97B /* Coordinator.swift in Sources */,
 				FAE1985428A7974E00559205 /* DetailView.swift in Sources */,
@@ -443,9 +457,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.blessingsoft.Cherry;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -470,9 +488,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.blessingsoft.Cherry;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

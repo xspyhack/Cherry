@@ -12,6 +12,7 @@ struct MattersList: View {
   @ObservedObject var store: Store
   @ObservedObject var coordinator: Coordinator
   @State var selection: Matter?
+  @State var isEditing: Bool = false
 
   var body: some View {
     List(selection: $selection) {
@@ -49,6 +50,15 @@ struct MattersList: View {
       .listRowSeparator(.hidden)
     }
     .listStyle(.sidebar) // collapsible
+    .toolbar {
+      ToolbarItemGroup(placement: .primaryAction) {
+          Button {
+            isEditing = true
+          } label: {
+              Label("Create Matter", systemImage: "plus")
+          }
+        }
+    }
 #if os(iOS)
     .background(Color(.systemBackground))
 #else
@@ -58,6 +68,12 @@ struct MattersList: View {
     .navigationTitle(store.journal?.title ?? "Matters")
     .navigationDestination(for: Matter.ID.self) { id in
       MatterDetailView(matter: store.matterBinding(for: id))
+    }
+    .sheet(isPresented: $isEditing) {
+      NavigationView {
+        MatterEditor(matter: .constant(Matter.new))
+      }
+      //.navigationViewStyle(.stack)
     }
   }
 }
