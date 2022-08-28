@@ -9,10 +9,16 @@ import Foundation
 import SwiftUI
 import BlessingKit
 
+enum MatterSection {
+  case past
+  case upcoming
+}
+
 @MainActor
 final class Store: ObservableObject {
   @Published var matters: [Matter] = []
   @Published var journal: Journal? = Journal.personal
+  @Published var editing: Matter?
 
   private let service = MatterService()
 
@@ -53,11 +59,49 @@ final class Store: ObservableObject {
   }
 
   var pastMatters: [Matter] {
-    matters.filter { $0.occurrenceDate > Date() }
+    matters.filter { $0.occurrenceDate < Date() }
   }
 
   var upcomingMatters: [Matter] {
-    matters.filter { $0.occurrenceDate <= Date() }
+    matters.filter { $0.occurrenceDate >= Date() }
+  }
+
+  @discardableResult
+  func newMatter() -> Bool {
+    let matter = Matter(id: "")
+    matters.insert(matter, at: 0)
+    return true
+  }
+
+  func cancel(matter: Matter) {
+    if matter.id.isEmpty {
+      matters.removeAll(where: { $0.id == matter.id })
+    } else if let editing = editing {
+      // discard
+      guard let index = matters.firstIndex(where: { $0.id == editing.id }) else {
+        return
+      }
+      matters[index] = editing
+    }
+  }
+
+  func save(matter: Matter) {
+    guard let index = matters.firstIndex(where: { $0.id == matter.id }) else {
+      return
+    }
+
+    // save to disk
+    if matter.id.isEmpty {
+      matters[index].id = UUID().uuidString
+    } else if let editing = editing, editing.id == matter.id {
+    }
+    self.editing = nil
+  }
+
+  func delete(at offsets: IndexSet, in section: MatterSection) {
+    let selections = section == .past ? pastMatters : upcomingMatters
+    let deletes = offsets.map { selections[$0] }
+    matters.removeAll(where: { deletes.contains($0) })
   }
 }
 

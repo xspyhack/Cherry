@@ -17,23 +17,6 @@ struct MattersList: View {
   var body: some View {
     List(selection: $selection) {
       Section {
-        ForEach(store.pastMatters) { matter in
-          Button {
-            coordinator.path.append(matter.id)
-          } label: {
-            MatterRow(matter: matter)
-          }
-
-        }
-      } header: {
-        Text("Past")
-          .sectionHeader()
-          .listRowInsets(.headerInsets)
-      }
-      .listRowBackground(Color.clear)
-      .listRowSeparator(.hidden)
-
-      Section {
         ForEach(store.upcomingMatters) { matter in
           Button {
             coordinator.path.append(matter.id)
@@ -41,8 +24,30 @@ struct MattersList: View {
             MatterRow(matter: matter)
           }
         }
+        .onDelete {
+          store.delete(at: $0, in: .upcoming)
+        }
       } header: {
         Text("Upcoming")
+          .sectionHeader()
+          .listRowInsets(.headerInsets)
+      }
+      .listRowBackground(Color.clear)
+      .listRowSeparator(.hidden)
+
+      Section {
+        ForEach(store.pastMatters) { matter in
+          Button {
+            coordinator.path.append(matter.id)
+          } label: {
+            MatterRow(matter: matter)
+          }
+        }
+        .onDelete {
+          store.delete(at: $0, in: .past)
+        }
+      } header: {
+        Text("Past")
           .sectionHeader()
           .listRowInsets(.headerInsets)
       }
@@ -53,7 +58,7 @@ struct MattersList: View {
     .toolbar {
       ToolbarItemGroup(placement: .primaryAction) {
           Button {
-            isEditing = true
+            isEditing = store.newMatter()
           } label: {
               Label("Create Matter", systemImage: "plus")
           }
@@ -69,11 +74,13 @@ struct MattersList: View {
     .navigationDestination(for: Matter.ID.self) { id in
       MatterDetailView(matter: store.matterBinding(for: id))
     }
+    .sheet(item: $store.editing, content: { matter in
+      MatterEditor(store: store, matter: store.matterBinding(for: matter.id))
+    })
     .sheet(isPresented: $isEditing) {
       NavigationView {
-        MatterEditor(matter: .constant(Matter.new))
+        MatterEditor(store: store, matter: $store.matters[0])
       }
-      //.navigationViewStyle(.stack)
     }
   }
 }
