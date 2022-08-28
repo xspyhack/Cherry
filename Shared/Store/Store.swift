@@ -18,7 +18,6 @@ enum MatterSection {
 final class Store: ObservableObject {
   @Published var matters: [Matter] = []
   @Published var journal: Journal? = Journal.personal
-  @Published var editing: Matter?
 
   private let service = MatterService()
 
@@ -66,6 +65,14 @@ final class Store: ObservableObject {
     matters.filter { $0.occurrenceDate >= Date() }
   }
 
+  var creating: Binding<Matter> {
+    Binding<Matter> {
+      return self.matters[0]
+    } set: { newValue in
+      self.matters[0] = newValue
+    }
+  }
+
   @discardableResult
   func newMatter() -> Bool {
     let matter = Matter(id: "")
@@ -76,12 +83,6 @@ final class Store: ObservableObject {
   func cancel(matter: Matter) {
     if matter.id.isEmpty {
       matters.removeAll(where: { $0.id == matter.id })
-    } else if let editing = editing {
-      // discard
-      guard let index = matters.firstIndex(where: { $0.id == editing.id }) else {
-        return
-      }
-      matters[index] = editing
     }
   }
 
@@ -93,9 +94,7 @@ final class Store: ObservableObject {
     // save to disk
     if matter.id.isEmpty {
       matters[index].id = UUID().uuidString
-    } else if let editing = editing, editing.id == matter.id {
     }
-    self.editing = nil
   }
 
   func delete(at offsets: IndexSet, in section: MatterSection) {

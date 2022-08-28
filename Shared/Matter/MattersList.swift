@@ -75,13 +75,8 @@ struct MattersList: View {
     .navigationDestination(for: Matter.ID.self) { id in
       MatterDetailView(matter: store.matterBinding(for: id))
     }
-    .sheet(item: $store.editing, content: { matter in
-      MatterEditor(store: store, matter: store.matterBinding(for: matter.id))
-    })
     .sheet(isPresented: $isEditing) {
-      NavigationView {
-        MatterEditor(store: store, matter: $store.matters[0])
-      }
+      MatterComposer(store: store, matter: store.creating)
     }
   }
 }

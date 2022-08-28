@@ -8,9 +8,39 @@
 import SwiftUI
 import BlessingKit
 
-struct MatterEditor: View {
+struct MatterComposer: View {
   @Environment(\.dismiss) var dismiss
   @ObservedObject var store: Store
+  @Binding var matter: Matter
+
+  var body: some View {
+    NavigationView {
+      MatterEditor(matter: $matter)
+        .toolbar {
+          ToolbarItemGroup(placement: .confirmationAction) {
+            Button {
+              store.save(matter: $matter.wrappedValue)
+              dismiss()
+            } label: {
+              Text("Done")
+            }
+          }
+
+          ToolbarItemGroup(placement: .cancellationAction) {
+            Button {
+              store.cancel(matter: $matter.wrappedValue)
+              dismiss()
+            } label: {
+              Text("Cancel")
+            }
+          }
+        }
+        .navigationTitle("New Matter")
+    }
+  }
+}
+
+struct MatterEditor: View {
   @Binding var matter: Matter
 
   enum Field: Equatable {
@@ -35,32 +65,12 @@ struct MatterEditor: View {
         .focused($focused, equals: .notes)
     }
     .defaultFocus($focused, .title)
-    .toolbar {
-      ToolbarItemGroup(placement: .confirmationAction) {
-        Button {
-          store.save(matter: $matter.wrappedValue)
-          dismiss()
-        } label: {
-          Text("Done")
-        }
-      }
-
-      ToolbarItemGroup(placement: .cancellationAction) {
-        Button {
-          store.cancel(matter: $matter.wrappedValue)
-          dismiss()
-        } label: {
-          Text("Cancel")
-        }
-      }
-    }
-    .navigationTitle("New Matter")
   }
 }
 
 struct MatterEditor_Previews: PreviewProvider {
   static var previews: some View {
-    MatterEditor(store: .preview, matter: .constant(Matter.new))
+    MatterEditor(matter: .constant(Matter.new))
   }
 }
 
