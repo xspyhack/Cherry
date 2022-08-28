@@ -57,12 +57,13 @@ struct MattersList: View {
     .listStyle(.sidebar) // collapsible
     .toolbar {
       ToolbarItemGroup(placement: .primaryAction) {
-          Button {
-            isEditing = store.newMatter()
-          } label: {
-              Label("Create Matter", systemImage: "plus")
-          }
+        Button {
+          isEditing = store.newMatter()
+        } label: {
+          Label("Create Matter", systemImage: "plus")
         }
+        EditButton()
+      }
     }
 #if os(iOS)
     .background(Color(.systemBackground))

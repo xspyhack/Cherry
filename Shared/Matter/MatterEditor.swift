@@ -13,14 +13,28 @@ struct MatterEditor: View {
   @ObservedObject var store: Store
   @Binding var matter: Matter
 
+  enum Field: Equatable {
+    case title
+    case tag
+    case when
+    case notes
+  }
+
+  @FocusState private var focused: Field?
+
   var body: some View {
     Form {
       TextField("Title", text: $matter.title, prompt: Text("What's the Matter"))
+        .focused($focused, equals: .title)
       TagblePicker("Tag", selection: $matter.tag)
+        .focused($focused, equals: .tag)
       DatePicker("When", selection: $matter.occurrenceDate, displayedComponents: .date)
+        .focused($focused, equals: .when)
       AppTextEditor(text: $matter.notes ?? "", placeholder: "Notes")
         .frame(minHeight: 200)
+        .focused($focused, equals: .notes)
     }
+    .defaultFocus($focused, .title)
     .toolbar {
       ToolbarItemGroup(placement: .confirmationAction) {
         Button {
@@ -69,7 +83,7 @@ struct AppTextEditor: View {
           .padding(.top, 8)
       }
       TextEditor(text: $text)
-        .padding(.leading, -3)
+        .padding(.leading, -4)
     }
   }
 }
