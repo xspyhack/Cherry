@@ -24,6 +24,7 @@
 		FAE1985428A7974E00559205 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1985328A7974E00559205 /* DetailView.swift */; };
 		FAE1985728A79F0000559205 /* MattersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1985628A79F0000559205 /* MattersList.swift */; };
 		FAE1985928A7A1B300559205 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1985828A7A1B300559205 /* Journal.swift */; };
+		FAE62F5528BB97C200CD5905 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE62F5428BB97C200CD5905 /* Binding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		FAE1985328A7974E00559205 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		FAE1985628A79F0000559205 /* MattersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MattersList.swift; sourceTree = "<group>"; };
 		FAE1985828A7A1B300559205 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
+		FAE62F5428BB97C200CD5905 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				FA92AFEA28A7A78600217378 /* Matter */,
 				FA92AFE928A7A77D00217378 /* Model */,
 				FAE1985028A7961400559205 /* Navigation */,
+				FAE62F5328BB97A800CD5905 /* General */,
 				FAE1985528A79C4100559205 /* Resources */,
 			);
 			path = Shared;
@@ -182,6 +185,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FAE62F5328BB97A800CD5905 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				FAE62F5428BB97C200CD5905 /* Binding.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +304,7 @@
 				FA1614A128B9FD7B0086CF47 /* MatterEditor.swift in Sources */,
 				FAE1982728A78E3800559205 /* MainView.swift in Sources */,
 				FABF00C728B0EECC00F8C97B /* Coordinator.swift in Sources */,
+				FAE62F5528BB97C200CD5905 /* Binding.swift in Sources */,
 				FAE1985428A7974E00559205 /* DetailView.swift in Sources */,
 				FA92AFF528A8CB1F00217378 /* Store.swift in Sources */,
 				FA92AFFB28A8D89D00217378 /* MatterService.swift in Sources */,
