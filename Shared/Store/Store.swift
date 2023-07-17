@@ -107,3 +107,7 @@ final class Store: ObservableObject {
 extension Store {
   static let preview = Store()
 }
+
+extension Matter {
+  static let new = Matter(id: UUID().uuidString, title: "Getting started")
+}

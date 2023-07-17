@@ -64,7 +64,9 @@ struct MatterEditor: View {
         .frame(minHeight: 200)
         .focused($focused, equals: .notes)
     }
+#if os(macOS)
     .defaultFocus($focused, .title)
+#endif
   }
 }
 
